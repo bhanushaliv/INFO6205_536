@@ -10,9 +10,9 @@ public class GeneticAlgorithm {
 
     public static void main(String[] args) {
 
-        final int POPULATION_SIZE = 8;
+        final int POPULATION_SIZE = 1000;
         int genoTypeLength = 4;
-        int phenoTypeLength = 4;
+        int phenoTypeLength = 8;
         double cutoff = 0.2;
 
         List<City> initialRoute = new ArrayList<>(Arrays.asList(new City("Boston", 42.3601, -71, 1),
@@ -22,7 +22,6 @@ public class GeneticAlgorithm {
                 new City("Denver", 39, -104, 5),
                 new City("Los Angeles", 34, -118, 6),
                 new City("Chicago", 41.3601, -87, 7),
-                new City("Dallas", 32, -96, 7),
                 new City("New York", 40.3601, -74, 8)));
 
 

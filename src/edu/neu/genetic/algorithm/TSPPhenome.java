@@ -2,23 +2,18 @@ package edu.neu.genetic.algorithm;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class TSPPhenome {
 
-    private List<City> cities = new ArrayList<>();
+    private List<City> cities;
     private double fitness = 0;
     private boolean isFitnessChanged = true;
     private int id;
 
-    public TSPPhenome(int id) {
+    public TSPPhenome(int id, List<City> cities) {
         this.id = id;
-    }
-
-    public TSPPhenome(List<City> cities) {
-        this.cities = cities;
-        Collections.shuffle(this.cities);
+        this.cities = new ArrayList<>();
     }
 
     public void setCities(List<City> cities) {
@@ -39,7 +34,7 @@ public class TSPPhenome {
             return returnValue;
         }).sum() + this.cities.get(0).distanceTo(this.cities.get(citiesSize - 1)));
 
-        return 0;
+        return totalDistance;
     }
 
     public String toString() {
@@ -47,11 +42,7 @@ public class TSPPhenome {
     }
 
     public double getFitness() {
-
-        if (isFitnessChanged == true) {
-            fitness = (1 / calculateTotalDistance()) * 10000;
-            isFitnessChanged = false;
-        }
-        return fitness;
+        this.fitness = (1 / calculateTotalDistance()) * 10000;
+        return this.fitness;
     }
 }
