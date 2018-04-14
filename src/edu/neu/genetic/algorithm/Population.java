@@ -8,13 +8,15 @@ import java.util.stream.IntStream;
 
 public class Population {
 
-    private List<City> baseGene;
+    private List<City> baseRoute;
     private int populationSize = GeneticAlgorithm.POPULATION_SIZE);
     private List<TSPPhenome> routes = new ArrayList<>(populationSize);
     private List<TSPGenome> genomeList = new ArrayList<>(populationSize);
+    //ivate String[] baseGeneString;
 
-    public Population(int populationSize, List<City> cities) {
+    public Population(int populationSize, List<City> cities, String[] geneString) {
         IntStream.range(0, populationSize).forEach(x -> routes.add(new TSPPhenome(cities)));
+        //is.baseGeneString = geneString;
     }
 
     public List<TSPGenome> getGenomeList() {
@@ -43,7 +45,7 @@ public class Population {
 
         //generate genome objects equivalent to size of population
         this.genomeList = IntStream.range(0,populationSize)
-                // String rep is twice length of genome. if 23 45 31 swap numbers located at adjacent indices.
+                // String rep is twice length of genome.
                                     .mapToObj(g -> new TSPGenome(genolength*2,g))
                                     .collect(Collectors.toList());
 
@@ -51,16 +53,19 @@ public class Population {
         this.genomeList.stream().forEach( tspGenome -> {
             IntStream.range(0, genolength*2).forEach( i -> {
                 int randInt = r.nextInt(phenolength);
+                //creates gene string represention and links to the genome
                 tspGenome.getGenString()[i] = String.valueOf(randInt);
             });
         });
 
+        //link phenome with genome by adding new route created
         this.genomeList.stream().forEach( tspGenome -> {
-            List<City> newBaseGene = new ArrayList<>();
-            baseGene.stream().forEach(baseGen -> newBaseGene.add(baseGen));
-            tspGenome.generatePhenome(newBaseGene);
-
+            List<City> newBaseRoute = new ArrayList<>();
+            baseRoute.stream().forEach(city -> newBaseRoute.add(city));
+            tspGenome.generatePhenome(newBaseRoute, tspGenome.getGenString());
         });
+
+
 
 }
 }

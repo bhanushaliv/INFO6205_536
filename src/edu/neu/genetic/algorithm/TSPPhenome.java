@@ -21,6 +21,10 @@ public class TSPPhenome {
         Collections.shuffle(this.cities);
     }
 
+    public void setCities(List<City> cities) {
+        this.cities = cities;
+    }
+
     public List<City> getCities() {
         isFitnessChanged = true;
         return cities;
