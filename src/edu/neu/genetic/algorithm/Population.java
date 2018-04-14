@@ -9,14 +9,13 @@ import java.util.stream.IntStream;
 public class Population {
 
     private List<City> baseRoute;
-    private int populationSize = GeneticAlgorithm.POPULATION_SIZE);
+    private int populationSize = GeneticAlgorithm.POPULATION_SIZE;
     private List<TSPPhenome> routes = new ArrayList<>(populationSize);
     private List<TSPGenome> genomeList = new ArrayList<>(populationSize);
-    //ivate String[] baseGeneString;
 
-    public Population(int populationSize, List<City> cities, String[] geneString) {
+    public Population(int populationSize, List<City> cities, String[] geneString, List<City> baseRoute) {
         IntStream.range(0, populationSize).forEach(x -> routes.add(new TSPPhenome(cities)));
-        //is.baseGeneString = geneString;
+        this.baseRoute = baseRoute;
     }
 
     public List<TSPGenome> getGenomeList() {
