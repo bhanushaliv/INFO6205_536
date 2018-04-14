@@ -5,17 +5,18 @@ public class City {
     private double longitude;
     private double latitude;
     private String name;
+    private int id;
 
 
-    public City(String name, double latitude, double longitude) {
+    public City(String name, double latitude, double longitude, int id) {
         this.longitude = Math.toRadians(longitude);
         this.latitude = Math.toRadians(latitude);
         this.name = name;
+        this.id = id;
     }
 
     //return the distance between two latitude/longitude points im kilometres - uses Haversine
     public double distanceTo(City city) {
-
 
         double deltaLongitude = city.getLongitude() - this.getLongitude();
         double deltaLatitude = city.getLatitude() - this.getLatitude();
@@ -53,5 +54,13 @@ public class City {
 
     public String toString() {
         return getName();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

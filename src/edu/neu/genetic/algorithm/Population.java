@@ -6,7 +6,6 @@ import java.util.stream.IntStream;
 
 public class Population {
 
-
     private List<Route> routes = new ArrayList<>(GeneticAlgorithm.POPULATION_SIZE);
 
     public Population(int populationSize, List<City> cities) {
