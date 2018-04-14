@@ -49,7 +49,7 @@ public class TSPGenome implements Comparable<TSPGenome> {
         int index1 = Integer.valueOf(this.genString[startIndex]);
         int index2 = Integer.valueOf(this.genString[startIndex + 1]);
 
-        route = swap(route, index1, index2);
+        swap(route, index1, index2);
 
         transform(startIndex + 2, endIndex, route);
     }
@@ -58,8 +58,8 @@ public class TSPGenome implements Comparable<TSPGenome> {
 
         City tempCity = route.get(index1);
 
-        route.add(index1, route.get(index2));
-        route.add(index2, tempCity);
+        route.set(index1, route.get(index2));
+        route.set(index2, tempCity);
 
         return route;
     }

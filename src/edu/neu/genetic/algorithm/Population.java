@@ -32,15 +32,6 @@ public class Population {
         this.genomeList = genomeList;
     }
 
-//    public void sortRoutesByFitness() {
-//        routes.sort((route1, route2) -> {
-//            int flag = 0;
-//            if (route1.getFitness() > route2.getFitness()) flag = -1;
-//            else if (route1.getFitness() < route2.getFitness()) flag = 1;
-//            return flag;
-//        });
-//    }
-
     public void initPopulation(int populationSize, int genolength, int phenolength) {
         Random r = new Random();
 

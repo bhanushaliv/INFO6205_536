@@ -11,7 +11,7 @@ public class TSPPhenome {
     private boolean isFitnessChanged = true;
     private int id;
 
-    public TSPPhenome(int id, List<City> cities) {
+    public TSPPhenome(int id) {
         this.id = id;
         this.cities = new ArrayList<>();
     }
