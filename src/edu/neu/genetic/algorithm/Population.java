@@ -62,7 +62,7 @@ public class Population {
         this.genomeList.stream().forEach( tspGenome -> {
             List<City> newBaseRoute = new ArrayList<>();
             baseRoute.stream().forEach(city -> newBaseRoute.add(city));
-            tspGenome.generatePhenome(newBaseRoute, tspGenome.getGenString());
+            tspGenome.generatePhenome(newBaseRoute);
         });
 
 
