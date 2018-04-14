@@ -45,6 +45,11 @@ public class Population {
         this.genomeList.stream().forEach(tspGenome -> {
             IntStream.range(0, genolength * 2).forEach(i -> {
                 int randInt = r.nextInt(phenolength);
+                if (i % 2 != 0) {
+                    while (Integer.parseInt(tspGenome.getGenString()[i - 1]) == randInt) {
+                        randInt = r.nextInt(phenolength);
+                    }
+                }
                 //creates gene string represention and links to the genome
                 tspGenome.getGenString()[i] = String.valueOf(randInt);
             });
