@@ -5,14 +5,18 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Route {
+public class TSPPhenome {
 
     private List<City> cities = new ArrayList<>();
     private double fitness = 0;
     private boolean isFitnessChanged = true;
+    private int id;
 
+    public TSPPhenome(int id) {
+        this.id = id;
+    }
 
-    public Route(List<City> cities) {
+    public TSPPhenome(List<City> cities) {
         this.cities = cities;
         Collections.shuffle(this.cities);
     }
