@@ -7,7 +7,6 @@ import java.util.stream.IntStream;
 public class Population {
 
     private List<City> baseRoute;
-    private int populationSize = GeneticAlgorithm.POPULATION_SIZE;
     private List<TSPGenome> genomeList;
     private double cutoff;
 
@@ -19,7 +18,7 @@ public class Population {
         }
     };
 
-    public Population(int populationSize, List<City> cities, String[] geneString, List<City> baseRoute) {
+    public Population(double cutoff, List<City> baseRoute) {
         this.genomeList = new ArrayList<>();
         this.cutoff = cutoff;
         this.baseRoute = baseRoute;
@@ -42,7 +41,7 @@ public class Population {
 //        });
 //    }
 
-    public void initPopulation(int genolength, int phenolength) {
+    public void initPopulation(int populationSize, int genolength, int phenolength) {
         Random r = new Random();
 
         //generate genome objects equivalent to size of population
