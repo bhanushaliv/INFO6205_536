@@ -7,7 +7,6 @@ public class City {
     private String name;
     private int id;
 
-
     public City(String name, double latitude, double longitude, int id) {
         this.longitude = Math.toRadians(longitude);
         this.latitude = Math.toRadians(latitude);

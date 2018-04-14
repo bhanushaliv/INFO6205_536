@@ -12,7 +12,5 @@ public class GeneticAlgorithm {
 
     public List<City> getInitialRoute() {
         return this.initialRoute;
-
     }
-
 }
