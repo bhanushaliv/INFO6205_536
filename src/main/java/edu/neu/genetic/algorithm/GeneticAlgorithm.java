@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class GeneticAlgorithm {
 
@@ -44,15 +43,6 @@ public class GeneticAlgorithm {
         System.out.println("Generation 0\n" + population.getGenomeList().get(0).getPhenome().toString());
         log.info("\n First Generation "+ population.getGenomeList().get(0).getPhenome().toString() );
 
-        IntStream.range(1, MAX_NUMBER_OF_GENERATION + 1)
-                .forEach(generationNo -> {
-                    population.regeneration();
-                    population.sortPopulation();
-                    System.out.println("\nGeneration " + generationNo);
-                    System.out.println(population.getGenomeList().get(0).getPhenome().toString());
-                    log.info("\nBest of Generation "+generationNo+" "+population.getGenomeList().get(0).getPhenome().toString());
-                });
-
         /**
          * Run the loop for max 100 generations
          * Assumption: if the bestMinDistance is same for 20 generations
@@ -79,8 +69,6 @@ public class GeneticAlgorithm {
             System.out.println("\nGeneration " + i);
             System.out.println(population.getGenomeList().get(0).getPhenome().toString());
         }
-
         System.out.println("\n*******Best way to visit all the cities*******\n" + bestPhenome);
-
     }
 }
