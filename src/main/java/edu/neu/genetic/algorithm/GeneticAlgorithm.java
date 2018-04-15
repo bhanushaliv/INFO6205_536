@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class GeneticAlgorithm {
 
@@ -17,9 +16,9 @@ public class GeneticAlgorithm {
         int genoTypeLength = 4;
         int phenoTypeLength = 8;
         double cutoff = 0.2;
-        final int NUMBER_OF_GENERATION = 20;
+        final int MAX_NUMBER_OF_GENERATION = 100;
 
-        List<City> baseRoute = new ArrayList<>(Arrays.asList(new City("Boston", 42.3601, -71, 1),
+        List<City> initialRoute = new ArrayList<>(Arrays.asList(new City("Boston", 42.3601, -71, 1),
                 new City("Austin", 30.26, -97, 2),
                 new City("Houston", 29.7604, -95.3698, 3),
                 new City("San Francisco", 37, -122, 4),
@@ -31,9 +30,16 @@ public class GeneticAlgorithm {
         log.info("Base Route before Generation 0 "+ baseRoute);
 
         Population population = new Population(cutoff, baseRoute);
+        Population population = new Population(cutoff, initialRoute);
 
         population.initializePopulation(POPULATION_SIZE, genoTypeLength, phenoTypeLength);
+
+        int bestConstantDistanceForGenerationsCtr = 1;
+        double bestDistanceSoFar;
+        TSPPhenome bestPhenome = population.getGenomeList().get(0).getPhenome();
+
         population.sortPopulation();
+        bestDistanceSoFar = population.getGenomeList().get(0).getPhenome().getTotalDistance();
 
         System.out.println("Generation 0\n" + population.getGenomeList().get(0).getPhenome().toString());
         log.info("\n First Generation "+ population.getGenomeList().get(0).getPhenome().toString() );
@@ -46,5 +52,35 @@ public class GeneticAlgorithm {
                     System.out.println(population.getGenomeList().get(0).getPhenome().toString());
                     log.info("\nBest of Generation "+generationNo+" "+population.getGenomeList().get(0).getPhenome().toString());
                 });
+
+        /**
+         * Run the loop for max 100 generations
+         * Assumption: if the bestMinDistance is same for 20 generations
+         * we have found our optimal solution
+         */
+        for (int i = 1; i <= MAX_NUMBER_OF_GENERATION; i++) {
+
+            if (bestConstantDistanceForGenerationsCtr > 20) {
+                break;
+            }
+
+            population.regeneration();
+            population.sortPopulation();
+
+            bestConstantDistanceForGenerationsCtr++;
+            double currentBestDistance = population.getGenomeList().get(0).getPhenome().getTotalDistance();
+
+            // if the best distance is reduced more than 50, reintialize the counter to 1 and run until it reaches 20 again
+            if (currentBestDistance < (bestDistanceSoFar - 50)) {
+                bestDistanceSoFar = currentBestDistance;
+                bestConstantDistanceForGenerationsCtr = 1;
+                bestPhenome = population.getGenomeList().get(0).getPhenome();
+            }
+            System.out.println("\nGeneration " + i);
+            System.out.println(population.getGenomeList().get(0).getPhenome().toString());
+        }
+
+        System.out.println("\n*******Best way to visit all the cities*******\n" + bestPhenome);
+
     }
 }

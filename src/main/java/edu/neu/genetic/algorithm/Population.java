@@ -12,6 +12,9 @@ public class Population {
     private List<TSPGenome> genomeList;
     private double cutoff;
 
+    /**
+     * Comparator defined to compare and sort all genomes in population
+     */
     Logger log = Logger.getLogger(Population.class);
 
     public Comparator<TSPGenome> genoTypeComparator = (TSPGenome g1, TSPGenome g2) -> g2.compareTo(g1);
@@ -30,12 +33,22 @@ public class Population {
         this.genomeList = genomeList;
     }
 
+    /**
+     * This function randomly creates the first generation of genomes
+     * based on the randomly created genString
+     * Thus each each genotype is characterised with a sequence like:
+     * 0 3 4 5 6 2 5 7
+     *
+     * @param populationSize size of the population
+     * @param genolength     length of genotype
+     * @param phenolength    length of phenotype
+     */
     public void initializePopulation(int populationSize, int genolength, int phenolength) {
         Random r = new Random();
 
         //generate genome objects equivalent to size of population
         this.genomeList = IntStream.range(0, populationSize)
-                // String rep is twice length of genome.
+                // String genString is twice length of genome
                 .mapToObj(g -> new TSPGenome(genolength * 2, g))
                 .collect(Collectors.toList());
 
@@ -64,6 +77,11 @@ public class Population {
         Collections.sort(this.genomeList, this.genoTypeComparator);
     }
 
+    /**
+     * This function takes 80% of the sorted
+     * genome population form the current generation to create a new generation of genomes
+     * The Children are created using a crossover between two randomly selected parents
+     */
     public void regeneration() {
         Random r = new Random();
         int ubound = (int) ((1 - this.cutoff) * this.genomeList.size());
@@ -81,10 +99,18 @@ public class Population {
             log.info("Child" + i +" "+ child.getPhenome().toString());
             newGeneration.add(i, child);
         }
-
         this.genomeList = newGeneration;
     }
 
+    /**
+     * For Parent1 Genotype and Parent2 Genotype, first half of the
+     * child gene sequence comes from Parent1 and the other half comes from Parent2
+     *
+     * @param firstParent  index of first Parent
+     * @param secondParent index of second Parent
+     * @param newMemberId  id for the the phenotype
+     * @return
+     */
     public TSPGenome crossover(int firstParent, int secondParent, int newMemberId) {
         TSPGenome firstGenome = this.genomeList.get(firstParent);
         TSPGenome secondGenome = this.genomeList.get(secondParent);
