@@ -65,15 +65,5 @@ public class GeneticAlgorithm {
 
         System.out.println("\n*******Best way to visit all the cities*******\n" + bestPhenome);
 
-//        IntStream.range(1, NUMBER_OF_GENERATION + 1)
-//                .forEach(generationNo -> {
-//                    population.regeneration();
-//                    population.sortPopulation();
-//
-//                    double currentBestDistance = population.getGenomeList().get(0).getPhenome().getTotalDistance();
-//
-//                    System.out.println("\nGeneration " + generationNo);
-//                    System.out.println(population.getGenomeList().get(0).getPhenome().toString());
-//                });
     }
 }
