@@ -73,21 +73,10 @@ public class Population {
         Collections.sort(this.genomeList, this.genoTypeComparator);
     }
 
-    /*
-     *
-     * This method takes 80% - 90% of the sorted
-     * genotype population from the current generation
-     * to create a new population of genotypes. The children
-     * created are created as a result of cross over of two randomly
-     * selected parents from the current generation
-     *
-     * */
-
-
     /**
      * This function takes 80% of the sorted
-     * genome population
-     *
+     * genome population form the current generation to create a new generation of genomes
+     * The Children are created using a crossover between two randomly selected parents
      */
     public void regeneration() {
         Random r = new Random();
@@ -103,13 +92,20 @@ public class Population {
                 secondParent = r.nextInt((ubound));
             }
             TSPGenome child = crossover(firstParent, secondParent, i);
-
             newGeneration.add(i, child);
         }
-
         this.genomeList = newGeneration;
     }
 
+    /**
+     * For Parent1 Genotype and Parent2 Genotype, first half of the
+     * child gene sequence comes from Parent1 and the other half comes from Parent2
+     *
+     * @param firstParent  index of first Parent
+     * @param secondParent index of second Parent
+     * @param newMemberId  id for the the phenotype
+     * @return
+     */
     public TSPGenome crossover(int firstParent, int secondParent, int newMemberId) {
         TSPGenome firstGenome = this.genomeList.get(firstParent);
         TSPGenome secondGenome = this.genomeList.get(secondParent);
