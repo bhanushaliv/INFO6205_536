@@ -70,18 +70,34 @@ public class Population {
         Random r = new Random();
         int ubound = (int) ((1 - this.cutoff) * this.genomeList.size());
 
-        List<TSPGenome> newGeneration = IntStream.range(0, this.genomeList.size())
-                .mapToObj(index -> {
+        List<TSPGenome> newGeneration = new ArrayList<TSPGenome>(this.genomeList.size());
 
-                    int firstParent = r.nextInt((ubound));
-                    int secondParent = r.nextInt((ubound));
+        for (int i = 0; i < this.genomeList.size(); i++) {
+            int firstParent = r.nextInt((ubound));
+            int secondParent = r.nextInt((ubound));
 
-                    while (firstParent == secondParent) {
-                        secondParent = r.nextInt((ubound));
-                    }
-                    TSPGenome child = crossover(firstParent, secondParent, index);
-                    return child;
-                }).collect(Collectors.toList());
+            while (firstParent == secondParent) {
+                secondParent = r.nextInt((ubound));
+            }
+            TSPGenome child = crossover(firstParent, secondParent, i);
+
+            newGeneration.add(i, child);
+
+        }
+
+//        List<TSPGenome> newGeneration = IntStream.range(0, this.genomeList.size())
+//                .mapToObj(index -> {
+//
+//                    int firstParent = r.nextInt((ubound));
+//                    int secondParent = r.nextInt((ubound));
+//
+//                    while (firstParent == secondParent) {
+//                        secondParent = r.nextInt((ubound));
+//                    }
+//                    TSPGenome child = crossover(firstParent, secondParent, index);
+//                    return child;
+//                }).collect(Collectors.toList());
+
 
         this.genomeList = newGeneration;
     }
@@ -101,7 +117,8 @@ public class Population {
 
         TSPGenome child = new TSPGenome(newMemberId);
         child.setGenString(childGenString);
-        child.generatePhenome(this.baseRoute);
+        List<City> newBaseOrder = new ArrayList<>(this.baseRoute);
+        child.generatePhenome(newBaseOrder);
         return child;
     }
 }
