@@ -12,7 +12,7 @@ public class GeneticAlgorithm {
         int genoTypeLength = 4;
         int phenoTypeLength = 8;
         double cutoff = 0.2;
-        final int NUMBER_OF_GENERATION = 20;
+        final int MAX_NUMBER_OF_GENERATION = 100;
 
         List<City> initialRoute = new ArrayList<>(Arrays.asList(new City("Boston", 42.3601, -71, 1),
                 new City("Austin", 30.26, -97, 2),
@@ -37,12 +37,12 @@ public class GeneticAlgorithm {
 
         /**
          * run the loop for max 100 generations
-         * Assumption: if the bestMinDistance is same for 10 generations
+         * Assumption: if the bestMinDistance is same for 20 generations
          * we have found our solution
          */
-        for (int i = 0; i < 100; i++) {
+        for (int i = 1; i <= MAX_NUMBER_OF_GENERATION; i++) {
 
-            if (bestDistanceConstantForGenerationsCtr > 10) {
+            if (bestDistanceConstantForGenerationsCtr > 20) {
                 break;
             }
 
