@@ -23,15 +23,13 @@ public class GeneticAlgorithm {
                 new City("Chicago", 41.3601, -87, 7),
                 new City("New York", 40.3601, -74, 8)));
 
-        List<City> baseRoute = initialRoute;
-        Population population = new Population(cutoff, baseRoute);
+        Population population = new Population(cutoff, initialRoute);
 
         population.initializePopulation(POPULATION_SIZE, genoTypeLength, phenoTypeLength);
 
-        int totalGenerations = 1;
         int bestDistanceConstantForGenerationsCtr = 1;
         double bestDistanceSoFar;
-        TSPPhenome bestPhenome = null;
+        TSPPhenome bestPhenome = population.getGenomeList().get(0).getPhenome();
 
         population.sortPopulation();
         bestDistanceSoFar = population.getGenomeList().get(0).getPhenome().getTotalDistance();
