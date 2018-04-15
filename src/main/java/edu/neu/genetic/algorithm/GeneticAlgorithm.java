@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class GeneticAlgorithm {
 
@@ -27,9 +28,8 @@ public class GeneticAlgorithm {
                 new City("Chicago", 41.3601, -87, 7),
                 new City("New York", 40.3601, -74, 8)));
 
-        log.info("Base Route before Generation 0 "+ baseRoute);
+        log.info("Base Route before Generation 0 "+ initialRoute);
 
-        Population population = new Population(cutoff, baseRoute);
         Population population = new Population(cutoff, initialRoute);
 
         population.initializePopulation(POPULATION_SIZE, genoTypeLength, phenoTypeLength);
@@ -44,7 +44,7 @@ public class GeneticAlgorithm {
         System.out.println("Generation 0\n" + population.getGenomeList().get(0).getPhenome().toString());
         log.info("\n First Generation "+ population.getGenomeList().get(0).getPhenome().toString() );
 
-        IntStream.range(1, NUMBER_OF_GENERATION + 1)
+        IntStream.range(1, MAX_NUMBER_OF_GENERATION + 1)
                 .forEach(generationNo -> {
                     population.regeneration();
                     population.sortPopulation();
