@@ -13,6 +13,7 @@ public class GeneticAlgorithm {
         int genoTypeLength = 4;
         int phenoTypeLength = 8;
         double cutoff = 0.2;
+        final int NUMBER_OF_GENERATION = 10;
 
         List<City> initialRoute = new ArrayList<>(Arrays.asList(new City("Boston", 42.3601, -71, 1),
                 new City("Austin", 30.26, -97, 2),
@@ -27,11 +28,11 @@ public class GeneticAlgorithm {
         List<City> baseRoute = initialRoute;
         Population population = new Population(cutoff, baseRoute);
 
-        population.initPopulation(POPULATION_SIZE, genoTypeLength, phenoTypeLength);
+        population.initializePopulation(POPULATION_SIZE, genoTypeLength, phenoTypeLength);
 
         population.sortPopulation();
         System.out.println("Generation 0" + population.getGenomeList().get(0).getPhenome().toString());
-        IntStream.range(1, 11)
+        IntStream.range(1, NUMBER_OF_GENERATION + 1)
                 .forEach(generationNo -> {
                     population.regeneration();
                     population.sortPopulation();

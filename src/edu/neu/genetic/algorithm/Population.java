@@ -10,13 +10,7 @@ public class Population {
     private List<TSPGenome> genomeList;
     private double cutoff;
 
-    public Comparator<TSPGenome> genoTypeComparator
-            = new Comparator<TSPGenome>() {
-
-        public int compare(TSPGenome g1, TSPGenome g2) {
-            return g2.compareTo(g1);
-        }
-    };
+    public Comparator<TSPGenome> genoTypeComparator = (TSPGenome g1, TSPGenome g2) -> g2.compareTo(g1);
 
     public Population(double cutoff, List<City> baseRoute) {
         this.genomeList = new ArrayList<>();
@@ -32,7 +26,7 @@ public class Population {
         this.genomeList = genomeList;
     }
 
-    public void initPopulation(int populationSize, int genolength, int phenolength) {
+    public void initializePopulation(int populationSize, int genolength, int phenolength) {
         Random r = new Random();
 
         //generate genome objects equivalent to size of population
@@ -70,7 +64,7 @@ public class Population {
         Random r = new Random();
         int ubound = (int) ((1 - this.cutoff) * this.genomeList.size());
 
-        List<TSPGenome> newGeneration = new ArrayList<TSPGenome>(this.genomeList.size());
+        List<TSPGenome> newGeneration = new ArrayList<>(this.genomeList.size());
 
         for (int i = 0; i < this.genomeList.size(); i++) {
             int firstParent = r.nextInt((ubound));
@@ -84,20 +78,6 @@ public class Population {
             newGeneration.add(i, child);
 
         }
-
-//        List<TSPGenome> newGeneration = IntStream.range(0, this.genomeList.size())
-//                .mapToObj(index -> {
-//
-//                    int firstParent = r.nextInt((ubound));
-//                    int secondParent = r.nextInt((ubound));
-//
-//                    while (firstParent == secondParent) {
-//                        secondParent = r.nextInt((ubound));
-//                    }
-//                    TSPGenome child = crossover(firstParent, secondParent, index);
-//                    return child;
-//                }).collect(Collectors.toList());
-
 
         this.genomeList = newGeneration;
     }
