@@ -1,5 +1,7 @@
 package edu.neu.genetic.algorithm;
 
+import org.apache.log4j.Logger;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -9,6 +11,8 @@ public class Population {
     private List<City> baseRoute;
     private List<TSPGenome> genomeList;
     private double cutoff;
+
+    Logger log = Logger.getLogger(Population.class);
 
     public Comparator<TSPGenome> genoTypeComparator = (TSPGenome g1, TSPGenome g2) -> g2.compareTo(g1);
 
@@ -63,7 +67,7 @@ public class Population {
     public void regeneration() {
         Random r = new Random();
         int ubound = (int) ((1 - this.cutoff) * this.genomeList.size());
-
+        log.info("Regeneration using the base order and Crossover");
         List<TSPGenome> newGeneration = new ArrayList<>(this.genomeList.size());
 
         for (int i = 0; i < this.genomeList.size(); i++) {
@@ -74,7 +78,7 @@ public class Population {
                 secondParent = r.nextInt((ubound));
             }
             TSPGenome child = crossover(firstParent, secondParent, i);
-
+            log.info("Child" + i +" "+ child.getPhenome().toString());
             newGeneration.add(i, child);
         }
 
@@ -96,6 +100,7 @@ public class Population {
 
         TSPGenome child = new TSPGenome(newMemberId);
         child.setGenString(childGenString);
+        log.debug("\n Child Generation Genome String "+ childGenString);
         List<City> newBaseOrder = new ArrayList<>(this.baseRoute);
         child.generatePhenome(newBaseOrder);
         return child;

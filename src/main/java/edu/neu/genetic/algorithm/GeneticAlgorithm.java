@@ -1,11 +1,15 @@
 package edu.neu.genetic.algorithm;
 
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class GeneticAlgorithm {
+
+    private static final Logger log = Logger.getLogger(GeneticAlgorithm.class);
 
     public static void main(String[] args) {
 
@@ -15,7 +19,7 @@ public class GeneticAlgorithm {
         double cutoff = 0.2;
         final int NUMBER_OF_GENERATION = 20;
 
-        List<City> initialRoute = new ArrayList<>(Arrays.asList(new City("Boston", 42.3601, -71, 1),
+        List<City> baseRoute = new ArrayList<>(Arrays.asList(new City("Boston", 42.3601, -71, 1),
                 new City("Austin", 30.26, -97, 2),
                 new City("Houston", 29.7604, -95.3698, 3),
                 new City("San Francisco", 37, -122, 4),
@@ -24,19 +28,23 @@ public class GeneticAlgorithm {
                 new City("Chicago", 41.3601, -87, 7),
                 new City("New York", 40.3601, -74, 8)));
 
-        List<City> baseRoute = initialRoute;
+        log.info("Base Route before Generation 0 "+ baseRoute);
+
         Population population = new Population(cutoff, baseRoute);
 
         population.initializePopulation(POPULATION_SIZE, genoTypeLength, phenoTypeLength);
-
         population.sortPopulation();
+
         System.out.println("Generation 0\n" + population.getGenomeList().get(0).getPhenome().toString());
+        log.info("\n First Generation "+ population.getGenomeList().get(0).getPhenome().toString() );
+
         IntStream.range(1, NUMBER_OF_GENERATION + 1)
                 .forEach(generationNo -> {
                     population.regeneration();
                     population.sortPopulation();
                     System.out.println("\nGeneration " + generationNo);
                     System.out.println(population.getGenomeList().get(0).getPhenome().toString());
+                    log.info("\nBest of Generation "+generationNo+" "+population.getGenomeList().get(0).getPhenome().toString());
                 });
     }
 }
