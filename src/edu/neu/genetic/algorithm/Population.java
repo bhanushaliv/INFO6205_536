@@ -76,7 +76,6 @@ public class Population {
             TSPGenome child = crossover(firstParent, secondParent, i);
 
             newGeneration.add(i, child);
-
         }
 
         this.genomeList = newGeneration;
