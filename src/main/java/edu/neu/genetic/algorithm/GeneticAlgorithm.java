@@ -3,7 +3,6 @@ package edu.neu.genetic.algorithm;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class GeneticAlgorithm {
 
@@ -29,14 +28,52 @@ public class GeneticAlgorithm {
 
         population.initializePopulation(POPULATION_SIZE, genoTypeLength, phenoTypeLength);
 
+        int totalGenerations = 1;
+        int bestDistanceConstantForGenerationsCtr = 1;
+        double bestDistanceSoFar;
+        TSPPhenome bestPhenome = null;
+
         population.sortPopulation();
+        bestDistanceSoFar = population.getGenomeList().get(0).getPhenome().getTotalDistance();
         System.out.println("Generation 0\n" + population.getGenomeList().get(0).getPhenome().toString());
-        IntStream.range(1, NUMBER_OF_GENERATION + 1)
-                .forEach(generationNo -> {
-                    population.regeneration();
-                    population.sortPopulation();
-                    System.out.println("\nGeneration " + generationNo);
-                    System.out.println(population.getGenomeList().get(0).getPhenome().toString());
-                });
+
+        /**
+         * run the loop for max 100 generations
+         * Assumption: if the bestMinDistance is same for 10 generations
+         * we have found our solution
+         */
+        for (int i = 0; i < 100; i++) {
+
+            if (bestDistanceConstantForGenerationsCtr > 10) {
+                break;
+            }
+
+            population.regeneration();
+            population.sortPopulation();
+
+            bestDistanceConstantForGenerationsCtr++;
+            double currentBestDistance = population.getGenomeList().get(0).getPhenome().getTotalDistance();
+
+            if (currentBestDistance < bestDistanceSoFar) {
+                bestDistanceSoFar = currentBestDistance;
+                bestDistanceConstantForGenerationsCtr = 0;
+                bestPhenome = population.getGenomeList().get(0).getPhenome();
+            }
+            System.out.println("\nGeneration " + i);
+            System.out.println(population.getGenomeList().get(0).getPhenome().toString());
+        }
+
+        System.out.println("\n*******Best way to visit all the cities*******\n" + bestPhenome);
+
+//        IntStream.range(1, NUMBER_OF_GENERATION + 1)
+//                .forEach(generationNo -> {
+//                    population.regeneration();
+//                    population.sortPopulation();
+//
+//                    double currentBestDistance = population.getGenomeList().get(0).getPhenome().getTotalDistance();
+//
+//                    System.out.println("\nGeneration " + generationNo);
+//                    System.out.println(population.getGenomeList().get(0).getPhenome().toString());
+//                });
     }
 }
