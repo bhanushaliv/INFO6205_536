@@ -27,7 +27,7 @@ public class GeneticAlgorithm {
 
         population.initializePopulation(POPULATION_SIZE, genoTypeLength, phenoTypeLength);
 
-        int bestDistanceConstantForGenerationsCtr = 1;
+        int bestConstantDistanceForGenerationsCtr = 1;
         double bestDistanceSoFar;
         TSPPhenome bestPhenome = population.getGenomeList().get(0).getPhenome();
 
@@ -36,25 +36,26 @@ public class GeneticAlgorithm {
         System.out.println("Generation 0\n" + population.getGenomeList().get(0).getPhenome().toString());
 
         /**
-         * run the loop for max 100 generations
+         * Run the loop for max 100 generations
          * Assumption: if the bestMinDistance is same for 20 generations
-         * we have found our solution
+         * we have found our optimal solution
          */
         for (int i = 1; i <= MAX_NUMBER_OF_GENERATION; i++) {
 
-            if (bestDistanceConstantForGenerationsCtr > 20) {
+            if (bestConstantDistanceForGenerationsCtr > 20) {
                 break;
             }
 
             population.regeneration();
             population.sortPopulation();
 
-            bestDistanceConstantForGenerationsCtr++;
+            bestConstantDistanceForGenerationsCtr++;
             double currentBestDistance = population.getGenomeList().get(0).getPhenome().getTotalDistance();
 
-            if (currentBestDistance < bestDistanceSoFar) {
+            // if the best distance is reduced more than 50, reintialize the counter to 1 and run until it reaches 20 again
+            if (currentBestDistance < (bestDistanceSoFar - 50)) {
                 bestDistanceSoFar = currentBestDistance;
-                bestDistanceConstantForGenerationsCtr = 0;
+                bestConstantDistanceForGenerationsCtr = 1;
                 bestPhenome = population.getGenomeList().get(0).getPhenome();
             }
             System.out.println("\nGeneration " + i);

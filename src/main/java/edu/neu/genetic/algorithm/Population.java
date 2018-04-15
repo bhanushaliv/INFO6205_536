@@ -10,6 +10,9 @@ public class Population {
     private List<TSPGenome> genomeList;
     private double cutoff;
 
+    /**
+     * Comparator defined to compare and sort all genomes in population
+     */
     public Comparator<TSPGenome> genoTypeComparator = (TSPGenome g1, TSPGenome g2) -> g2.compareTo(g1);
 
     public Population(double cutoff, List<City> baseRoute) {
@@ -26,12 +29,22 @@ public class Population {
         this.genomeList = genomeList;
     }
 
+    /**
+     * This function randomly creates the first generation of genomes
+     * based on the randomly created genString
+     * Thus each each genotype is characterised with a sequence like:
+     * 0 3 4 5 6 2 5 7
+     *
+     * @param populationSize size of the population
+     * @param genolength     length of genotype
+     * @param phenolength    length of phenotype
+     */
     public void initializePopulation(int populationSize, int genolength, int phenolength) {
         Random r = new Random();
 
         //generate genome objects equivalent to size of population
         this.genomeList = IntStream.range(0, populationSize)
-                // String rep is twice length of genome.
+                // String genString is twice length of genome
                 .mapToObj(g -> new TSPGenome(genolength * 2, g))
                 .collect(Collectors.toList());
 
@@ -60,6 +73,22 @@ public class Population {
         Collections.sort(this.genomeList, this.genoTypeComparator);
     }
 
+    /*
+     *
+     * This method takes 80% - 90% of the sorted
+     * genotype population from the current generation
+     * to create a new population of genotypes. The children
+     * created are created as a result of cross over of two randomly
+     * selected parents from the current generation
+     *
+     * */
+
+
+    /**
+     * This function takes 80% of the sorted
+     * genome population
+     *
+     */
     public void regeneration() {
         Random r = new Random();
         int ubound = (int) ((1 - this.cutoff) * this.genomeList.size());
