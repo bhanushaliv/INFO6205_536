@@ -41,7 +41,6 @@ public class Population {
                 .mapToObj(g -> new TSPGenome(genolength * 2, g))
                 .collect(Collectors.toList());
 
-
         this.genomeList.stream().forEach(tspGenome -> {
             IntStream.range(0, genolength * 2).forEach(i -> {
                 int randInt = r.nextInt(phenolength);

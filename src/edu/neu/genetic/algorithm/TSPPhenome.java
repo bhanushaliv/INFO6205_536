@@ -68,7 +68,7 @@ public class TSPPhenome {
 
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("** Order " + this.id + " : ");
+        stringBuilder.append("** ID " + this.id + " : ");
 
         IntStream.range(0, this.cities.size())
                 .forEach(i -> {
@@ -78,8 +78,8 @@ public class TSPPhenome {
                 });
 
         stringBuilder.append(" **");
-        stringBuilder.append("** distance : " + this.totalDistance + " **");
-        stringBuilder.append("** fitness score : " + this.fitness + " **");
+        stringBuilder.append("** Total Distance : " + this.totalDistance + " **");
+        stringBuilder.append("** Fitness score : " + this.fitness + " **");
 
         return stringBuilder.toString();
     }

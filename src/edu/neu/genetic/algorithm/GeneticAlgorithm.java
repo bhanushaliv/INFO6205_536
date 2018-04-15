@@ -7,7 +7,6 @@ import java.util.stream.IntStream;
 
 public class GeneticAlgorithm {
 
-
     public static void main(String[] args) {
 
         final int POPULATION_SIZE = 1000;
@@ -31,14 +30,12 @@ public class GeneticAlgorithm {
         population.initPopulation(POPULATION_SIZE, genoTypeLength, phenoTypeLength);
 
         population.sortPopulation();
-        System.out.println("Generation 0" + " fitness score :" + population.getGenomeList().get(0).getPhenome().toString());
+        System.out.println("Generation 0" + population.getGenomeList().get(0).getPhenome().toString());
         IntStream.range(1, 11)
                 .forEach(generationNo -> {
                     population.regeneration();
                     population.sortPopulation();
-                    System.out.println("Generation " + generationNo + " fitness score :" + population.getGenomeList().get(0).getPhenome().toString());
+                    System.out.println("Generation " + generationNo + population.getGenomeList().get(0).getPhenome().toString());
                 });
-
     }
-
 }
