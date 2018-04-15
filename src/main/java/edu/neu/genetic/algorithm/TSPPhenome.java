@@ -8,7 +8,6 @@ public class TSPPhenome {
 
     private List<City> cities;
     private double fitness = 0;
-    private boolean isFitnessChanged = true;
     private int id;
     private double totalDistance;
 
@@ -19,14 +18,6 @@ public class TSPPhenome {
 
     public void setFitness(double fitness) {
         this.fitness = fitness;
-    }
-
-    public boolean isFitnessChanged() {
-        return isFitnessChanged;
-    }
-
-    public void setFitnessChanged(boolean fitnessChanged) {
-        isFitnessChanged = fitnessChanged;
     }
 
     public int getId() {
@@ -50,10 +41,14 @@ public class TSPPhenome {
     }
 
     public List<City> getCities() {
-        isFitnessChanged = true;
         return cities;
     }
 
+    /**
+     * Calculate the total distance for a route in a Phenotype
+     *
+     * @return total distance for a route
+     */
     public double calculateTotalDistance() {
         int citiesSize = this.cities.size();
         this.totalDistance = (int) (this.cities.stream().mapToDouble(x -> {
@@ -66,6 +61,14 @@ public class TSPPhenome {
         return this.totalDistance;
     }
 
+    /**
+     * @return info in format
+     * Generation X
+     * ID X :
+     * Boston->Chicago->Denver->San Francisco->Los Angeles->Austin->Houston->New York
+     * Total Distance : X
+     * Fitness score : X
+     */
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("ID " + this.id + " :\n");
@@ -83,6 +86,11 @@ public class TSPPhenome {
         return stringBuilder.toString();
     }
 
+    /**
+     * Calculate fitness for a phenotype
+     *
+     * @return fitess score
+     */
     public double getFitness() {
         this.fitness = (1 / calculateTotalDistance()) * 10000;
         return this.fitness;
