@@ -33,4 +33,4 @@ Genotype Length = 8<br />
 Total Solution by brute force = 8! (40320)<br />
 Population = 1000<br />
 Optimal solutions is found by keeping 40320/1000 ~ 40% of the Solution space<br />
-Optimal Solution found in  4th generation
+Optimal Solution found in 2nd generation
