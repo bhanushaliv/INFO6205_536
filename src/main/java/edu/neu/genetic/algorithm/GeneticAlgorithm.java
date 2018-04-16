@@ -27,7 +27,7 @@ public class GeneticAlgorithm {
                 new City("Chicago", 41.3601, -87, 7),
                 new City("New York", 40.3601, -74, 8)));
 
-        log.info("Base Route before Generation 0 "+ initialRoute);
+        log.info("Base Route before Generation 0 " + initialRoute);
 
         Population population = new Population(cutoff, initialRoute);
 
@@ -35,13 +35,14 @@ public class GeneticAlgorithm {
 
         int bestConstantDistanceForGenerationsCtr = 1;
         double bestDistanceSoFar;
+        int totalGenerationSpawned = 1;
+        population.sortPopulation();
         TSPPhenome bestPhenome = population.getGenomeList().get(0).getPhenome();
 
-        population.sortPopulation();
         bestDistanceSoFar = population.getGenomeList().get(0).getPhenome().getTotalDistance();
 
         System.out.println("Generation 0\n" + population.getGenomeList().get(0).getPhenome().toString());
-        log.info("\n First Generation "+ population.getGenomeList().get(0).getPhenome().toString() );
+        log.info("\n First Generation " + population.getGenomeList().get(0).getPhenome().toString());
 
         /**
          * Run the loop for max 100 generations
@@ -58,6 +59,7 @@ public class GeneticAlgorithm {
             population.sortPopulation();
 
             bestConstantDistanceForGenerationsCtr++;
+            totalGenerationSpawned++;
             double currentBestDistance = population.getGenomeList().get(0).getPhenome().getTotalDistance();
 
             // if the best distance is reduced more than 50, reintialize the counter to 1 and run until it reaches 20 again
@@ -70,5 +72,6 @@ public class GeneticAlgorithm {
             System.out.println(population.getGenomeList().get(0).getPhenome().toString());
         }
         System.out.println("\n*******Best way to visit all the cities*******\n" + bestPhenome);
+        System.out.println("Total number of generations spawned: " + totalGenerationSpawned);
     }
 }
