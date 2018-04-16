@@ -46,12 +46,12 @@ public class GeneticAlgorithm {
 
         /**
          * Run the loop for max 100 generations
-         * Assumption: if the bestMinDistance is same for 20 generations
+         * Assumption: if the bestMinDistance is same for 10 generations
          * we have found our optimal solution
          */
         for (int i = 1; i <= MAX_NUMBER_OF_GENERATION; i++) {
 
-            if (bestConstantDistanceForGenerationsCtr > 20) {
+            if (bestConstantDistanceForGenerationsCtr > 10) {
                 break;
             }
 

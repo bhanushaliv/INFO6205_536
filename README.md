@@ -1,5 +1,5 @@
 # INFO6205_536
-##Travelling Salesman Problem (Genetic Algorithm)
+## Travelling Salesman Problem (Genetic Algorithm)
 
 Team Members:
 Shrikant Mudholkar 001284732
@@ -23,8 +23,14 @@ For Crossover, select gene from top selected parent 1 and parent 2.
 Create new gene for next generation using first half gene of parent 1 and second half of other parent. 
 
 ### Evolution Mechanism 
-Keep looking for the optimal solution until the minimum distance becomes constant for 20 generations. 
+Keep looking for the optimal solution until the minimum distance becomes constant for 10 generations. 
 Creation of new generations would go until maximum of 100 generations.
 
 ### Result
 
+Total Cities = 8<br />
+Genotype Length = 8<br />
+Total Solution by brute force = 8! (40320)<br />
+Population = 1000<br />
+Optimal solutions is found by keeping 40320/1000 ~ 40% of the Solution space<br />
+Optimal Solution found in  4th generation
