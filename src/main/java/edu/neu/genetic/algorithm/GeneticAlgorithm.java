@@ -41,7 +41,7 @@ public class GeneticAlgorithm {
         bestDistanceSoFar = population.getGenomeList().get(0).getPhenome().getTotalDistance();
 
         System.out.println("Generation 0\n" + population.getGenomeList().get(0).getPhenome().toString());
-        log.info("\n First Generation "+ population.getGenomeList().get(0).getPhenome().toString() );
+        log.info("\n First Generation "+ population.getGenomeList().get(0).getPhenome().getCities() );
 
         /**
          * Run the loop for max 100 generations
