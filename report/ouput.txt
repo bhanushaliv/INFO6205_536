@@ -1,0 +1,152 @@
+"C:\Program Files\Java\jdk1.8.0_121\bin\java" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2017.2.4\lib\idea_rt.jar=62139:C:\Program Files\JetBrains\IntelliJ IDEA 2017.2.4\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files\Java\jdk1.8.0_121\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\servlet-api.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\rt.jar;C:\Users\varsha bhanushali\Documents\Algorithms\Final Project\INFO6205_536\target\classes;C:\Users\varsha bhanushali\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar;C:\Users\varsha bhanushali\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar" edu.neu.genetic.algorithm.GeneticAlgorithm
+Generation 0
+ID 823 :
+Boston->New York->Chicago->Denver->San Francisco->Los Angeles->Austin->Houston
+Total Distance : 9749.0
+Fitness score : 1.0257462303826033
+
+Generation 1
+ID 388 :
+Houston->Austin->Los Angeles->San Francisco->Denver->Chicago->New York->Boston
+Total Distance : 9749.0
+Fitness score : 1.0257462303826033
+
+Generation 2
+ID 817 :
+Boston->New York->Houston->Austin->San Francisco->Los Angeles->Denver->Chicago
+Total Distance : 9843.0
+Fitness score : 1.015950421619425
+
+Generation 3
+ID 831 :
+Boston->Chicago->Denver->San Francisco->Los Angeles->Austin->Houston->New York
+Total Distance : 9658.0
+Fitness score : 1.0354110581901015
+
+Generation 4
+ID 687 :
+Houston->Austin->Los Angeles->San Francisco->Denver->Chicago->New York->Boston
+Total Distance : 9749.0
+Fitness score : 1.0257462303826033
+
+Generation 5
+ID 188 :
+Boston->Chicago->Denver->San Francisco->Los Angeles->Austin->Houston->New York
+Total Distance : 9658.0
+Fitness score : 1.0354110581901015
+
+Generation 6
+ID 810 :
+Chicago->Denver->San Francisco->Los Angeles->Austin->Houston->Boston->New York
+Total Distance : 9749.0
+Fitness score : 1.0257462303826033
+
+Generation 7
+ID 586 :
+Houston->New York->Boston->Chicago->Denver->San Francisco->Los Angeles->Austin
+Total Distance : 9658.0
+Fitness score : 1.0354110581901015
+
+Generation 8
+ID 460 :
+Houston->Austin->Los Angeles->San Francisco->Denver->Chicago->New York->Boston
+Total Distance : 9749.0
+Fitness score : 1.0257462303826033
+
+Generation 9
+ID 572 :
+Los Angeles->Austin->Houston->New York->Boston->Chicago->Denver->San Francisco
+Total Distance : 9658.0
+Fitness score : 1.0354110581901015
+
+Generation 10
+ID 206 :
+Los Angeles->Austin->Houston->New York->Boston->Chicago->Denver->San Francisco
+Total Distance : 9658.0
+Fitness score : 1.0354110581901015
+
+Generation 11
+ID 34 :
+Boston->Chicago->Denver->San Francisco->Los Angeles->Austin->Houston->New York
+Total Distance : 9658.0
+Fitness score : 1.0354110581901015
+
+Generation 12
+ID 34 :
+Los Angeles->Austin->Houston->New York->Boston->Chicago->Denver->San Francisco
+Total Distance : 9658.0
+Fitness score : 1.0354110581901015
+
+Generation 13
+ID 705 :
+Austin->Houston->Los Angeles->San Francisco->Denver->Chicago->Boston->New York
+Total Distance : 9919.0
+Fitness score : 1.0081661457808246
+
+Generation 14
+ID 689 :
+Houston->Austin->Los Angeles->San Francisco->Denver->Chicago->New York->Boston
+Total Distance : 9749.0
+Fitness score : 1.0257462303826033
+
+Generation 15
+ID 482 :
+Houston->Austin->Los Angeles->San Francisco->Denver->Chicago->New York->Boston
+Total Distance : 9749.0
+Fitness score : 1.0257462303826033
+
+Generation 16
+ID 841 :
+Boston->Houston->Austin->San Francisco->Los Angeles->Denver->Chicago->New York
+Total Distance : 9934.0
+Fitness score : 1.00664384940608
+
+Generation 17
+ID 627 :
+New York->Houston->Austin->Los Angeles->San Francisco->Denver->Chicago->Boston
+Total Distance : 9658.0
+Fitness score : 1.0354110581901015
+
+Generation 18
+ID 981 :
+Houston->Austin->San Francisco->Los Angeles->Denver->Chicago->Boston->New York
+Total Distance : 9843.0
+Fitness score : 1.015950421619425
+
+Generation 19
+ID 730 :
+New York->Houston->Austin->Los Angeles->San Francisco->Denver->Chicago->Boston
+Total Distance : 9658.0
+Fitness score : 1.0354110581901015
+
+Generation 20
+ID 724 :
+Boston->Houston->Austin->San Francisco->Los Angeles->Denver->Chicago->New York
+Total Distance : 9934.0
+Fitness score : 1.00664384940608
+
+Generation 21
+ID 50 :
+Boston->Houston->Austin->San Francisco->Los Angeles->Denver->Chicago->New York
+Total Distance : 9934.0
+Fitness score : 1.00664384940608
+
+Generation 22
+ID 794 :
+Boston->Houston->Austin->San Francisco->Los Angeles->Denver->Chicago->New York
+Total Distance : 9934.0
+Fitness score : 1.00664384940608
+
+Generation 23
+ID 678 :
+Boston->Houston->Austin->San Francisco->Los Angeles->Denver->Chicago->New York
+Total Distance : 9934.0
+Fitness score : 1.00664384940608
+
+*******Best way to visit all the cities*******
+ID 831 :
+Boston->Chicago->Denver->San Francisco->Los Angeles->Austin->Houston->New York
+Total Distance : 9658.0
+Fitness score : 1.0354110581901015
+
+Process finished with exit code 0
