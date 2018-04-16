@@ -34,3 +34,13 @@ Total Solution by brute force = 8! (40320)<br />
 Population = 1000<br />
 Optimal solutions is found by keeping 40320/1000 ~ 40% of the Solution space<br />
 Optimal Solution found in 3rd generation
+
+
+### Running the Application
+Download the source code from :
+https://github.com/bhanushaliv/INFO6205_536
+
+mvn clean install (Have Maven and Java preinstalled)
+After successfully running unit test cases and maven build 
+
+java –jar ./target/final-project-1.0-SNAPSHOT.jar
