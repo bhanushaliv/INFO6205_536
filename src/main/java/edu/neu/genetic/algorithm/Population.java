@@ -112,6 +112,11 @@ public class Population {
      * @return
      */
     public TSPGenome crossover(int firstParent, int secondParent, int newMemberId) {
+
+        log.info("\n Current Generations Parent's Genome String "+
+                Arrays.toString(this.genomeList.get(firstParent).getGenString()) +
+                Arrays.toString(this.genomeList.get(secondParent).getGenString())+ "\n");
+
         TSPGenome firstGenome = this.genomeList.get(firstParent);
         TSPGenome secondGenome = this.genomeList.get(secondParent);
         String[] childGenString = new String[firstGenome.getGenString().length];
@@ -126,7 +131,7 @@ public class Population {
 
         TSPGenome child = new TSPGenome(newMemberId);
         child.setGenString(childGenString);
-        log.debug("\n Child Generation Genome String "+ childGenString);
+        log.info("\n Child Generation Genome String "+ Arrays.toString(childGenString) +"\n");
         List<City> newBaseOrder = new ArrayList<>(this.baseRoute);
         child.generatePhenome(newBaseOrder);
         return child;
